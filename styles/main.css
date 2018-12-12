@@ -157,7 +157,7 @@ nav .current {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 40px;
-	background:  rgba(245,245,245,0.4);;
+	/* background:  rgba(109, 92, 92, 0.4);; */
 	width: 80%;
 	text-align: center;
 	font-family: 'Roboto', Georgia, Times, 'Times New Roman', serif;
@@ -166,12 +166,15 @@ nav .current {
 .feature-div h2{
 	font-size: 50px;
 	margin: 10px;
+	font-family: sh_font, 'Roboto', sans-serif;
 }
 
 .feature-div p {
 	font-size: 20px;
 	margin: 10px;
 	padding: 10px;
+	line-height: 1.5;
+	color: 	#656565;
 }
 
 hr { 
