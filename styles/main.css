@@ -60,7 +60,7 @@ table {
 	NAV
 */
 
-nav {
+.my-navbar {
 	width: 100%;
 	background-color: #AD7C67;
 	position: absolute;
@@ -68,9 +68,10 @@ nav {
 	font-family: sh_font, sans-serif;
 	position: fixed;
 	z-index: 3;
+	height: 55px;
 }
 
-nav ul{
+.my-navbar ul{
 	display: flex;
 	list-style-type: none;
 	flex-direction: row;
@@ -78,11 +79,11 @@ nav ul{
 	padding: 0.5rem;
 }
 
-nav li{
+.my-navbar li{
 	width: 10%;
 	text-align: center;
 }
-nav a{	
+.my-navbar a{	
 	font-size: 1.2rem;
 	color: #1F1F1F;
 	text-decoration: none;
@@ -90,19 +91,19 @@ nav a{
 	padding-top: 0.5rem;
 }
 
-nav a:hover {
+.my-navbar a:hover {
 	background-color: #CDC9C5;
 }
 
-nav a:focus {
+.my-navbar a:focus {
 	background-color: #CDC9C5;
 }
 
-nav .current {
+.my-navbar .current {
 	background-color: #CDC9C5;
 }
 
-.fixed-nav nav {
+.fixed-nav .my-navbar {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -169,18 +170,25 @@ nav .current {
 	font-family: sh_font, 'Roboto', sans-serif;
 }
 
+.feature-div h3{
+	font-size: 30px;
+	margin: 20px;
+	font-family: 'Roboto', sans-serif;
+}
+
 .feature-div p {
 	font-size: 20px;
 	margin: 10px;
 	padding: 10px;
+	width: 100%;
 	line-height: 1.5;
 	color: 	#656565;
 }
 
-hr { 
+.feature-divider { 
     display: block;
-    margin-top: 50px;
-	margin-bottom: 50px;
+    margin-top: 100px;
+	margin-bottom: 100px;
 	width: 75%;
     margin-left: auto;
     margin-right: auto;
@@ -190,3 +198,44 @@ hr {
 /* 
 	Intro
 */
+
+/* 
+	SLIDESHOW
+*/
+
+.slideshow-div {
+	margin: 100px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  /* border: 1px solid black; */
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: red;
+}
+
+.carousel-caption { 
+	position: absolute;
+	top: 440px;
+}
+
+.seasons{
+ top: 360px;
+}

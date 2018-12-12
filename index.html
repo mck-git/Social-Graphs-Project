@@ -7,11 +7,21 @@
     <meta name="viewport" content="width=device-width, intial-scale=1" />
     <link rel="stylesheet" href="styles/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        
     <script src="js/main.js"></script>
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="my-navbar">
         <ul>
             <li>
                 <a href="#top">Top</a>
@@ -20,16 +30,13 @@
                 <a href="#data">Data</a>
             </li>
             <li>
-                <a href="#centrality">Centrality</a>
+                <a href="#network">Network</a>
             </li>
             <li>
-                <a href="#sentiment">Sentiment</a>
+                <a href="#characters">Characters</a>
             </li>
             <li>
-                <a href="#similarity">Similarity</a>
-            </li>
-            <li>
-                <a href="#communities">Communities</a>
+                <a href="#seasons">seasons</a>
             </li>
             <li>
                 <a href="#details">Details</a>
@@ -64,8 +71,7 @@
                 Like an bunch of nerdy Dr. Phils we unraveled the relations and attitude of the people in South Park.
                 Therefore we're now equiped to answer the questions you always wanted to ask
                 but did'nt have neither the means or the energy too do.
-                Questions like who has the most influence? Is Hitler the happiest person in South Park? Are there
-                secret communities?
+                Questions like who has the most influence? Is Hitler the happiest person in South Park?
                 And most imortantly, what is Cartmans catchphrase?
                 <br />
                 <br />
@@ -86,23 +92,429 @@
             </p>
             <p>
                 <img src="img/south-park-graph.png" alt="" height="623" width="1000">
-                Change picture later on
             </p>
-            <hr class="feature-divider" id="centrality">
-            <div class="feature-div">
-                <h2>Centrality</h2>
             </div>
-            <hr class="feature-divider" id="sentiment">
+            <hr class="feature-divider" id="network">
             <div class="feature-div">
-                <h2>Sentiment</h2>
+                <h2>The Network</h2>
+                <p>
+                    Lets jump into the pool of data and see what we can unravel. Our network consist of 908 nodes, representing the
+                    characters and 3931 edges, representing the connections between the characters. Even though we plotted the network in
+                    as an undirected graph, to make it beautiful, the network is in fact a directed graph with edges pointing from one node to
+                    another. Due to this we can examine what characters that are more connected than others. To get an overview of the
+                    network as a whole, lets plot the degree distribution of all the nodes in the network, where degree is summed up as all the edges going
+                    in and out from the nodes. 
+                </p>
+
+                <p>
+                    <img src="img/degree-plot.png" alt="" height="623" width="1000">
+                </p>
+
+                <p> 
+                    As we can see, most of the characters have under 10 links, which means most characters in the show only interact with a
+                    few characters. There is only a few characters with high degrees. Due to this the network corresponds to something
+                    called the power law, which indicates that the network has a hub structure. A hub structure is when a network has a
+                    central part, containing one or several nodes, that almost every other node in the network connects to, something that
+                    is common in many real world networks. To better visualize this structure we plotted the betweenness centrality of the
+                    network, a measurement which makes it possible for us to see which nodes the most information pases trough, that is who
+                    has the most control over the network.
+                </p>
+
+                <p>
+                    <img src="img/b-plot.png" alt="" height="960" width="1000">
+                </p>
+
+                <p>
+                    As we can see, Cartman (red) is the most central character in the show, followed by Stan (blue), Kyle (green) who are
+                    quite similar in centrality. Unsurprisingly, the least central main character is Kenny (orange). This is due to Kenny
+                    being mostly a gag character, as the audience can only barely hear anything he says due to his muffled speech. This
+                    means that the amount of episodes where Kenny is a central character is quite limited in comparison to the other main
+                    characters.
+
+                </p>
             </div>
-            <hr class="feature-divider" id="similarity">
+            <hr class="feature-divider" id="characters">
             <div class="feature-div">
-                <h2>Similarity</h2>
+                <h2>Characters</h2>
+                <p> For anyone who has seen more than 5 seconds of South Park I do not think it comes as a surprise that Cartman has his
+                chubby little hands all over South Park. What did we found by looking at the data that is not obvious to your untrained
+                eye. Tag along and we might just tell you. </p>
+                <h3>Sentiment</h3>
+                <p>
+                    Sentiment analysis is a tool to find the positivity or negativity in language. This is done by comparing words
+                    in a text to a massive datasheet, with data of the 'average happiness' of words in english. By analysing the text in
+                    accordance to this, we can get an impression over which characters are the most positive and negative in the town of
+                    South Park. First lets meet the baddies, the people with the worst attitude in South Park. After that we have the goodies, South Parks joyous 
+                    little wonders of happiness.
+                </p>
+                <h3>The baddies</h3>
+                <div class="slideshow-div">
+                
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                
+                
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/characters/Classi.png" alt="..." height="507">
+                        </div>
+                        <div class="carousel-item ">
+                            <img src="img/characters/Peter-panda.png" alt="..." height="507">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/characters//Wayne-d.png" alt="Wayne-d" height="507">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/characters/Chris-crocker.png" alt="chris crocker" height="507">
+                        </div>
+                    
+                        <div class="carousel-item">
+                            <img src="img/characters/thad-jarvis.png" alt="thar jarvis" width="436" height="507">
+                        </div>
+                    </div>
+                
+            
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+                </div>
+                <h3>The Goodies</h3>
+                <div class="slideshow-div">
+                
+                
+                <div id="demo1" class="carousel slide" data-ride="carousel">
+                
+                
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/characters/giant-d.png" alt="giant d" height="507">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/characters/n-portman.png" alt="n portman" height="507">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/characters/ellen.png" alt="ellen" height="507">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/characters/blanket-jackson.png" alt="blanket" height="507">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/characters/francis.png" alt="francis" height="507">
+                        </div>
+                    </div>
+                
+                
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo1" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo1" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    </div>
+                </div>
+                <p>
+                    As we can see, none of the main characters, or even reoccuring side characters, take up any of the extremes of the
+                    sentiment ranking. The top 5 most positive and least positive are all occupied by side characters that appear in only a
+                    few episodes, if not only one. Due to them having few words relative to the main cast, it makes sense that their
+                    sentiment would be more in the extremes while characters with many spoken words would lie more in the middle. It is
+                    also often the case for single-episode characters in South Park to represent an extreme of one opinion, so a character
+                    would be only negative towards one topic instead of being more nuanced like the reoccuring characters.
+                </p>
+                <p>
+                    Looking only at the four boys, we see that Eric Cartman is actually the most positive of the crew, despite him often
+                    advocating for the most morally wrong things. This could be due to the words he's using simply not appearing in the
+                    dataset, or that he only says words that are bad in context instead of being negative in and of themselves. Kenny
+                    McCormick being the main character with the lowest sentiment is expected, however, as he often says things other
+                    characters cannot, such as more intense swears. This is due to his speech being muffled, and as such barely audible for
+                    the viewers of the show.
+                </p>
+                <h3>Catch phrases</h3>
+                <p>
+                    Now that we've looked at sentiment for both characters and the show as a whole, we wanted to look at what the unique
+                    words for the characters to try to see if we could figure out if certain characters have catch phrases. We do this by
+                    applying the TF-IDF algorithm, which calculates the Term Frequency (how often a word appears in the text) in relation
+                    to the Inverse Document Frequency (how many texts the word appears in).
+                </p>
+                <div class="slideshow-div">
+                    <h3>The Boys</h3>
+                
+                    <div id="demo2" class="carousel slide" data-ride="carousel">
+                
+                
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/kenny-w.png" alt="kenny w" height="507">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Kenny</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/stan-w.png" alt="stan w" height="507">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Stan</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/kyle-w.png" alt="kyle w" height="507">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Kyle</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/cartman-w.png" alt="cartman w" height="507">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Cartman</h5>
+                                </div>
+                            </div>
+                        </div>
+                
+                
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo2" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                </div>
+                <p>
+                    In order to get a better overview of the results, we convert the TF-IDF results into wordclouds. As the four main
+                    characters are the most interesting to look at, we decided to only create wordclouds for these. What you see in the wordclouds are
+                    the words that are used by the characters more so then for any other character. The bigger the words the more unique is is to the character. 
+                    We took the liberty to imagine the catchphrases for the four boys based on their wourdclouds. These are the results:
+                </br>
+                    <b>Kyle:</b> "Fatass, don't butter my dreidl!"
+                    </br>
+                    <b>Stan:</b> "Dude, don't look at Wendy!"
+                    </br>
+                    <b>Kenny:</b> "Woohoo, quack the fuckin' fuck!"
+                    </br>
+                    <b>Cartman:</b> "Mom, fuck an asshole jew guy!"
+                    
+                    
+                </p>
+
             </div>
-            <hr class="feature-divider" id="communites">
+            <hr class="feature-divider" id="seasons">
             <div class="feature-div">
-                <h2>Communites</h2>
+                <h2>Seasons</h2>
+                <p>
+                    Now that we have analysed each of the characters, we thought it would be interesting to look at the sentiment of the
+                    show as a whole, bundling the episodes per season. As the show releases a season each year, this will give us insight
+                    into how the tone of the show has changed over time, which we can relate to real world events around the same
+                    timeframe.
+                </p>
+
+                <p>
+                    <img src="img/season-sentiment.png" alt="" height="744" width="1200">
+                </p>
+                   
+                <p>
+                    It turns out the most positive seasons are around the beginning and the latest seasons, with the middle being the most
+                    negative seasons. Season 22 is an outlier in this, but this could be due to this season only having a few episodes out
+                    at the time of writing, and as such has less time to normalize the sentiment like the other seasons.
+                    
+                    Relating this to the real world, the most negative years would be between seasons 10 and 15, which would correspond to
+                    the timeframe 2006-2011. The most negative season is season 11, which aired in 2007. This season contained many
+                    episodes with crude subject matters, such as the episode where the boys pretend that they have tourettes syndrome. This
+                    adds up to a South Park that is not afraid to use more unconvetional language for comedic effect, and is regarded as
+                    one of the best seasons in all of South Park.
+                </p>
+                <h3>The Seasons</h3>
+
+                <div class="slideshow-div">
+
+                
+                    <div id="demo3" class="carousel slide" data-ride="carousel">
+                
+                
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/seasons/s1.png" alt="s1">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 1</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s2.png" alt="s2">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 2</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s3.png" alt="s3">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 3</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s4.png" alt="s4">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 4</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s5.png" alt="s5">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 5</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s6.png" alt="s6">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 6</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s7.png" alt="s7">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 7</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s8.png" alt="s8">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 8</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s9.png" alt="s9">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 9</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s10.png" alt="s10">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 10</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s11.png" alt="s11">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 11</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s12.png" alt="s12">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 12</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s13.png" alt="s13">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 13</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s14.png" alt="s14">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 14</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s15.png" alt="s15">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 15</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s16.png" alt="s16">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 16</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s17.png" alt="s17">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 17</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s18.png" alt="s18.png">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 18</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s19.png" alt="s19">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 19</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s20.png" alt="s20">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 20</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s21.png" alt="s21">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 21</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/seasons/s22.png" alt="s22">
+                                <div class="carousel-caption seasons d-none d-md-block">
+                                    <h5 style="color: black; font-size:40px;">Season 22</h5>
+                                </div>
+                            </div>
+                        </div>
+                
+                
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo3" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#demo3" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                    </div>
+                    </div>
+                    <p>
+                        We can see unique words throughout the seasons that correspond well with what was going on in the world at the time.
+                        Around the beginning we can se Manson, referring to Marilyn Manson who was controversial at the time. Later on we see
+                        Saddam Hussein appearing, right around when the conflict in Iraq was flaring up. This leads to season 9 where we see
+                        the famous Scientology episode dominating the wordcloud. Season 10 we have the Mohammad conflict, which was just after
+                        the Muhammad drawing by Jyllands Posten in Denmark, among others. In Season Fifteen we see Wikileaks in the wordcloud,
+                        which appeared when South Park did their parody of Julian Assange. In season 18 we start seeing Gluten, Freemium, Drone
+                        and Kickstart - all topics that quickly grew in popularity around when the season aired in 2014. Season 19 started with
+                        the rise of PC (politically correct) culture, and the massive gentrification movements that took place around the
+                        world, which of course was reflected in South Park. This all culminates in Season 22, which is currently airing, with
+                        words such as Vape, Anxiety and Amazon appearing, Amazon being especially notable as their poor working conditions have
+                        been appearing in the news lately.
+                    </p>
+                
+            </div>
+            <hr class="feature-divider" id="details">
+            <div class="feature-div">
+                <h2>Technical Details</h2>
+                <p>
+                    If you want all the boring details how we actually figured all this shit out you can move your fatass over to this <a href="https://colab.research.google.com/drive/1v7c0iU_WmRbxKSNDT4toRvf9BfamhLXk">link</a>.
+                </br>
+                    Or if your feeling frisky you can download the notebook <a href="South_Park_Colab.ipynb" download="">here</a>.
+                </br>
+                    Thank you for your precious time!
+                </br>
+                    <i>Tom Althin, Miria Clausen, Sacha Barkat</i>
+                </p>
+                <p>
+                    <img src="img/avatar/tom.jpg" alt="" height="350" width="350">
+                    <img src="img/avatar/miria.jpg" alt="" height="350" width="350">
+                    <img src="img/avatar/sacha.jpg" alt="" height="350" width="350">
+                </p>
             </div>
     </main>
 </body>
